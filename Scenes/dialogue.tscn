@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://crdoxxb256tl5"]
+
+[ext_resource type="Script" path="res://Scripts/DialogueBox.gd" id="1_v0mon"]
+[ext_resource type="Script" path="res://addons/ez_dialogue/ez_dialogue_node.gd" id="2_52hyc"]
+
+[node name="DialogueBox" type="Node2D"]
+script = ExtResource("1_v0mon")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 350.0
+offset_top = 500.0
+offset_right = 737.0
+offset_bottom = 622.0
+grow_vertical = 0
+
+[node name="Text" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sample 1"
+
+[node name="EzDialogue" type="Node" parent="."]
+script = ExtResource("2_52hyc")
+
+[connection signal="dialogue_generated" from="EzDialogue" to="." method="_on_ez_dialogue_dialogue_generated"]

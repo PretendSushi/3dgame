@@ -1,0 +1,167 @@
+[gd_scene load_steps=23 format=3 uid="uid://bqfqj0jt1pegw"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_6d2ni"]
+[ext_resource type="PackedScene" uid="uid://gcrds3dve0pp" path="res://Scenes/Office.tscn" id="1_fjn70"]
+[ext_resource type="Texture2D" uid="uid://cp8p886uyiasq" path="res://Textures/Floor/old_wood_floor_diff_4k.jpg" id="1_i78gd"]
+[ext_resource type="JSON" path="res://Data/Dialogues/test.json" id="2_5pb3s"]
+[ext_resource type="PackedScene" uid="uid://cw56hultrwyna" path="res://Scenes/generic_soldier.tscn" id="2_cigyx"]
+[ext_resource type="PackedScene" uid="uid://cl2ng32r44uwe" path="res://Scenes/player.tscn" id="5_o7llj"]
+[ext_resource type="PackedScene" uid="uid://bcxgn4c25m8c5" path="res://Scenes/inventory.tscn" id="6_ybljs"]
+[ext_resource type="PackedScene" uid="uid://72vg4h6amssw" path="res://SpawnableWeapons/SCAR-L_Remake.tscn" id="7_ar1iw"]
+[ext_resource type="Texture2D" uid="uid://cfcq12ltihhvh" path="res://Assets/Crosshairs/White/crosshair012.png" id="7_k8hek"]
+[ext_resource type="PackedScene" uid="uid://c6wntovhf7756" path="res://Scenes/NPC.tscn" id="7_sws3a"]
+[ext_resource type="Texture2D" uid="uid://cv2x8md0y7y4" path="res://Assets/Crosshairs/White/crosshair086.png" id="8_0xnwu"]
+[ext_resource type="PackedScene" uid="uid://cu6tujsenu7id" path="res://Scenes/CharacterSheet.tscn" id="8_epmld"]
+[ext_resource type="PackedScene" uid="uid://d14xuaywbba4d" path="res://Scenes/HUD.tscn" id="9_y7uw0"]
+[ext_resource type="PackedScene" uid="uid://crdoxxb256tl5" path="res://Scenes/dialogue.tscn" id="10_k1hqk"]
+[ext_resource type="PackedScene" uid="uid://d0ag4brpxnxsd" path="res://Scenes/pauseMenu.tscn" id="12_46k8y"]
+[ext_resource type="PackedScene" uid="uid://bf1p33auhk3ly" path="res://Scenes/DeathScreen.tscn" id="13_5p1g5"]
+[ext_resource type="PackedScene" uid="uid://c02hgsmqqqj06" path="res://Scenes/CharacterManager.tscn" id="14_117gs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cbdjs"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_os7gl"]
+sky_material = SubResource("ProceduralSkyMaterial_cbdjs")
+
+[sub_resource type="Environment" id="Environment_eckfd"]
+background_mode = 2
+sky = SubResource("Sky_os7gl")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_dx2sp"]
+vertices = PackedVector3Array(-43.5, 0.6, -49.5, -49.5, 0.6, -49.5, -49.5, 0.6, -38, -37.25, 0.6, -49.5, -43.5, 0.6, -49.5, -49.5, 0.6, -38, -31, 0.6, -49.5, -37.25, 0.6, -49.5, -49.5, 0.6, -38, -24.75, 0.6, -49.5, -31, 0.6, -49.5, -49.5, 0.6, -38, -18.5, 0.6, -49.5, -24.75, 0.6, -49.5, -49.5, 0.6, -38, -18.5, 0.6, -49.5, -49.5, 0.6, -38, -49.5, 0.6, -26.25, -12.25, 0.6, -49.5, -1.25, 0.6, -4, -6, 0.6, -49.5, -12.25, 0.6, -49.5, -49.5, 0.6, -26.25, -49.5, 0.6, -14.5, -1.25, 0.6, -4, 0.5, 0.6, -4.25, 0.25, 0.6, -49.5, -6, 0.6, -49.5, -49.5, 0.6, -2.75, -1.25, 0.6, -2.5, -1.25, 0.6, -4, -49.5, 0.6, -14.5, 0.5, 0.6, -4.25, 7, 0.6, -4.25, 7.25, 0.6, -49.5, 0.25, 0.6, -49.5, 49.5, 0.6, -38, 49.5, 0.6, -49.5, 38.75, 0.6, -49.5, 49.5, 0.6, -38, 38.75, 0.6, -49.5, 28.25, 0.6, -49.5, 49.5, 0.6, -26.25, 49.5, 0.6, -38, 28.25, 0.6, -49.5, 17.75, 0.6, -49.5, 7, 0.6, -4.25, 8.5, 0.6, -4.25, 49.5, 0.6, -14.5, 49.5, 0.6, -26.25, 17.75, 0.6, -49.5, 7.25, 0.6, -49.5, 8.5, 0.6, -4.25, 8.75, 0.6, -2.5, 49.5, 0.6, -2.75, 49.5, 0.6, -14.5, -49.5, 0.6, 2.75, -1.25, 0.6, 2.5, -1.25, 0.6, -2.5, -49.5, 0.6, -2.75, 8.75, 0.6, -2.5, 8.75, 0.6, 2.5, 49.5, 0.6, 2.75, 49.5, 0.6, -2.75, 0.5, 0.6, -2.5, 0.5, 0.6, 2.5, 7, 0.6, 2.5, 7, 0.6, -2.5, -49.5, 0.6, 37.75, -49.5, 0.6, 49.5, -43.5, 0.6, 49.5, -49.5, 0.6, 37.75, -43.5, 0.6, 49.5, -37.25, 0.6, 49.5, -49.5, 0.6, 37.75, -37.25, 0.6, 49.5, -31, 0.6, 49.5, -49.5, 0.6, 37.75, -31, 0.6, 49.5, -24.75, 0.6, 49.5, -49.5, 0.6, 37.75, -24.75, 0.6, 49.5, -18.5, 0.6, 49.5, -49.5, 0.6, 26, -49.5, 0.6, 37.75, -18.5, 0.6, 49.5, -12.25, 0.6, 49.5, -12.25, 0.6, 49.5, -6, 0.6, 49.5, -1.25, 0.6, 4, -49.5, 0.6, 14.25, -49.5, 0.6, 26, 0.25, 0.6, 49.5, 0.5, 0.6, 4.25, -1.25, 0.6, 4, -6, 0.6, 49.5, -1.25, 0.6, 4, -1.25, 0.6, 2.5, -49.5, 0.6, 2.75, -49.5, 0.6, 14.25, 38.75, 0.6, 49.5, 49.5, 0.6, 49.5, 49.5, 0.6, 37.75, 28.25, 0.6, 49.5, 38.75, 0.6, 49.5, 49.5, 0.6, 37.75, 28.25, 0.6, 49.5, 49.5, 0.6, 37.75, 49.5, 0.6, 26, 17.75, 0.6, 49.5, 49.5, 0.6, 14.25, 8.5, 0.6, 4.25, 7, 0.6, 4.25, 7.25, 0.6, 49.5, 17.75, 0.6, 49.5, 49.5, 0.6, 26, 49.5, 0.6, 2.75, 8.75, 0.6, 2.5, 8.5, 0.6, 4.25, 49.5, 0.6, 14.25, 0.25, 0.6, 49.5, 7.25, 0.6, 49.5, 7, 0.6, 4.25, 0.5, 0.6, 4.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(14, 13, 12), PackedInt32Array(15, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(22, 19, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(32, 35, 33), PackedInt32Array(33, 35, 34), PackedInt32Array(38, 37, 36), PackedInt32Array(41, 40, 39), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(49, 46, 50), PackedInt32Array(50, 46, 51), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(60, 63, 61), PackedInt32Array(61, 63, 62), PackedInt32Array(67, 66, 64), PackedInt32Array(64, 66, 65), PackedInt32Array(70, 69, 68), PackedInt32Array(73, 72, 71), PackedInt32Array(76, 75, 74), PackedInt32Array(79, 78, 77), PackedInt32Array(82, 81, 80), PackedInt32Array(85, 84, 86), PackedInt32Array(86, 84, 83), PackedInt32Array(88, 87, 89), PackedInt32Array(89, 87, 91), PackedInt32Array(89, 91, 90), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 95), PackedInt32Array(97, 96, 98), PackedInt32Array(98, 96, 99), PackedInt32Array(102, 101, 100), PackedInt32Array(105, 104, 103), PackedInt32Array(107, 106, 108), PackedInt32Array(108, 106, 109), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 115), PackedInt32Array(112, 115, 114), PackedInt32Array(112, 114, 113), PackedInt32Array(117, 116, 118), PackedInt32Array(118, 116, 119), PackedInt32Array(123, 122, 120), PackedInt32Array(120, 122, 121)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ah2j8"]
+albedo_texture = ExtResource("1_i78gd")
+uv1_scale = Vector3(1, 0, 1)
+uv1_triplanar = true
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_6d2ni")
+dialogue_json = ExtResource("2_5pb3s")
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource("Environment_eckfd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_dx2sp")
+
+[node name="Room1_Prefab" parent="NavigationRegion3D" instance=ExtResource("1_fjn70")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.85063, 0.224251, 0)
+disable_mode = 1
+
+[node name="GenericSoldier" parent="NavigationRegion3D" instance=ExtResource("2_cigyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.037, 0, 11.976)
+player_path = NodePath("../Player")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+material_override = SubResource("StandardMaterial3D_ah2j8")
+use_collision = true
+size = Vector3(100, 0.3, 100)
+
+[node name="Player" parent="NavigationRegion3D" instance=ExtResource("5_o7llj")]
+
+[node name="NPC" parent="NavigationRegion3D" instance=ExtResource("7_sws3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="HitRect" type="ColorRect" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = -714.0
+offset_top = -586.0
+offset_right = 1988.0
+offset_bottom = 1216.0
+color = Color(1, 0, 0, 0.32549)
+
+[node name="Inventory" parent="UI" instance=ExtResource("6_ybljs")]
+visible = false
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 520.0
+
+[node name="CharacterSheet" parent="UI" instance=ExtResource("8_epmld")]
+visible = false
+layout_mode = 1
+offset_left = 550.0
+offset_top = 300.0
+offset_right = 550.0
+offset_bottom = 300.0
+
+[node name="Crosshair" type="TextureRect" parent="UI"]
+layout_mode = 1
+offset_left = 550.0
+offset_top = 300.0
+offset_right = 614.0
+offset_bottom = 364.0
+texture = ExtResource("7_k8hek")
+
+[node name="Hitmarker" type="TextureRect" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 550.0
+offset_top = 300.0
+offset_right = 614.0
+offset_bottom = 364.0
+texture = ExtResource("8_0xnwu")
+
+[node name="HUD" parent="UI" instance=ExtResource("9_y7uw0")]
+layout_mode = 1
+
+[node name="Dialogue" parent="UI" instance=ExtResource("10_k1hqk")]
+visible = false
+
+[node name="pauseMenu" parent="UI" instance=ExtResource("12_46k8y")]
+visible = false
+
+[node name="DeathScreen" parent="UI" instance=ExtResource("13_5p1g5")]
+visible = false
+
+[node name="CharacterManager" parent="UI" instance=ExtResource("14_117gs")]
+visible = false
+layout_mode = 1
+
+[node name="Weapons" type="Node3D" parent="."]
+
+[node name="SCAR-L_Remake" parent="Weapons" instance=ExtResource("7_ar1iw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8955, 0.602217, 0)
+item_id = 5
+weapon_name = "SCAR-L"
+
+[connection signal="lock_dialogue" from="." to="NavigationRegion3D/Player" method="_on_level_lock_dialogue"]
+[connection signal="enemy_hit" from="NavigationRegion3D/GenericSoldier" to="." method="_on_generic_soldier_enemy_hit"]
+[connection signal="enemy_killed" from="NavigationRegion3D/GenericSoldier" to="NavigationRegion3D/Player" method="_on_generic_soldier_enemy_killed"]
+[connection signal="ammo_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_ammo_changed"]
+[connection signal="health_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_health_changed"]
+[connection signal="initialize_bars" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_initialize_bars"]
+[connection signal="initialize_char_sheet" from="NavigationRegion3D/Player" to="UI/CharacterSheet" method="_on_player_initialize_char_sheet"]
+[connection signal="interact_attempt" from="NavigationRegion3D/Player" to="NavigationRegion3D/NPC" method="_on_player_interact_attempt"]
+[connection signal="interact_attempt" from="NavigationRegion3D/Player" to="UI/Inventory" method="_on_player_interact_attempt"]
+[connection signal="interact_attempt" from="NavigationRegion3D/Player" to="Weapons/SCAR-L_Remake" method="_on_player_interact_attempt"]
+[connection signal="player_death" from="NavigationRegion3D/Player" to="." method="_on_player_player_death"]
+[connection signal="player_hit" from="NavigationRegion3D/Player" to="." method="_on_player_player_hit"]
+[connection signal="reserve_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_reserve_changed"]
+[connection signal="sanity_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_sanity_changed"]
+[connection signal="stamina_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_stamina_changed"]
+[connection signal="xp_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_xp_changed"]
+[connection signal="load_dialogue" from="NavigationRegion3D/NPC" to="." method="_on_npc_load_dialogue"]
+[connection signal="clean_slots" from="UI/Inventory" to="NavigationRegion3D/Player" method="_on_inventory_clean_slots"]
+[connection signal="weapon_changed" from="UI/Inventory" to="NavigationRegion3D/Player" method="_on_inventory_weapon_changed"]
+[connection signal="point_add" from="UI/CharacterSheet" to="NavigationRegion3D/Player" method="_on_character_sheet_point_add"]
+[connection signal="point_sub" from="UI/CharacterSheet" to="NavigationRegion3D/Player" method="_on_character_sheet_point_sub"]

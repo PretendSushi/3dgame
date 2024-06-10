@@ -1,0 +1,26 @@
+[
+	"1":{ 
+		ItemID: "1",
+		Name: "Item1",
+		Value: "1",
+		Grid: "0,0/0,1/-1,0"
+	},
+	"2":{
+		ItemID: "2",
+		Name: "Item2":,
+		Value: "2",
+		Grid: "0,0/0,1"
+	},
+	"3":{
+		ItemID: "3",
+		Name: "Item3"
+		Value: "3",
+		Grid: "0,0/1,0"
+	},
+	"4":{
+		ItemID: "4",
+		Name: "Item4"
+		Value: "4",
+		Grid: "0,0"
+	}
+]

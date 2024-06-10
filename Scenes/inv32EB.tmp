@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcxgn4c25m8c5"]
+
+[ext_resource type="Script" path="res://Scripts/inventory.gd" id="1_1eybr"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1eybr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 56.0
+offset_right = 594.0
+offset_bottom = 576.0
+color = Color(0.537255, 0.52549, 0.980392, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Button_Spawn" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Spawn Item"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+columns = 8
+
+[node name="WeaponInventory" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 103.0
+offset_right = 1037.0
+offset_bottom = 428.0
+color = Color(1, 0, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="WeaponInventory"]
+custom_minimum_size = Vector2(325, 325)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WeaponInventory/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WeaponInventory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Weapon Slot 1"
+
+[node name="WeaponContainer1" type="GridContainer" parent="WeaponInventory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 6
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="WeaponInventory/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WeaponInventory/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Weapon Slot 2"
+
+[node name="WeaponContainer2" type="GridContainer" parent="WeaponInventory/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Button_Spawn" to="." method="_on_button_spawn_pressed"]

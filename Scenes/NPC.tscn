@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6wntovhf7756"]
+
+[ext_resource type="Script" path="res://Scripts/NPC.gd" id="1_b31nm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3g3t8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_36pbv"]
+
+[node name="NPC" type="CharacterBody3D"]
+script = ExtResource("1_b31nm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3g3t8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_36pbv")

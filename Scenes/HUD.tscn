@@ -1,0 +1,192 @@
+[gd_scene load_steps=10 format=3 uid="uid://d14xuaywbba4d"]
+
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_prqdf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xalft"]
+bg_color = Color(0.6, 0.6, 0.6, 0.184314)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xygfd"]
+bg_color = Color(0, 0.698039, 0.14902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucdgi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02din"]
+bg_color = Color(0.0117647, 0.498039, 0.498039, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u63be"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqjwu"]
+bg_color = Color(0.286275, 0.729412, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dtr6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ebft"]
+bg_color = Color(0.741176, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_prqdf")
+
+[node name="TopBars" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1150, 25)
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 25.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Healthbar" type="ProgressBar" parent="TopBars"]
+z_index = 1
+custom_minimum_size = Vector2(400, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_xalft")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xygfd")
+value = 100.0
+show_percentage = false
+
+[node name="XPBar" type="ProgressBar" parent="TopBars"]
+visible = false
+custom_minimum_size = Vector2(310, 25)
+layout_direction = 2
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ucdgi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_02din")
+max_value = 2000.0
+value = 324.0
+show_percentage = false
+
+[node name="Staminabar" type="ProgressBar" parent="TopBars"]
+custom_minimum_size = Vector2(400, 25)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/background = SubResource("StyleBoxFlat_u63be")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xqjwu")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="BottomBars" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1150, 75)
+layout_mode = 0
+offset_top = 575.0
+offset_right = 1150.0
+offset_bottom = 628.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomBars"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="AmmoLabel" type="Label" parent="BottomBars/HBoxContainer"]
+layout_mode = 2
+text = "Ammo:
+"
+
+[node name="AmmoCount" type="Label" parent="BottomBars/HBoxContainer"]
+layout_mode = 2
+text = "30"
+
+[node name="ReserveLabel" type="Label" parent="BottomBars/HBoxContainer"]
+layout_mode = 2
+text = "Reserve Mags:"
+
+[node name="ReserveCount" type="Label" parent="BottomBars/HBoxContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 203.0
+offset_right = 25.0
+offset_bottom = 400.0
+
+[node name="Sanitybar" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_4dtr6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2ebft")
+value = 100.0
+fill_mode = 3
+show_percentage = false
