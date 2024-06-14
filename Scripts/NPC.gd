@@ -34,4 +34,4 @@ func _physics_process(delta):
 
 
 func _on_player_interact_attempt(item):
-	emit_signal("load_dialogue", "test.json")
+	emit_signal("load_dialogue", "MargotStart.json")

@@ -30,9 +30,9 @@ func _ready():
 	hit_mark.position.x = get_viewport().size.x / 2 - 32
 	hit_mark.position.y = get_viewport().size.y / 2 - 32
 	
-	($UI/Dialogue/EzDialogue as EzDialogue).start_dialogue(dialogue_json, state)
-	
-	
+#	dialogue_json.resource_path = "res://Data/Dialogues/test.json"
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
@@ -92,7 +92,9 @@ func _on_player_player_death():
 
 
 func _on_npc_load_dialogue(dialogue):
-	dialogue_json.resource_path = dialogue
+	dialogue = load("res://Data/Dialogues/" + dialogue)
+	dialogue_json = dialogue
+	($UI/Dialogue/EzDialogue as EzDialogue).start_dialogue(dialogue_json, state)
 	dialogue_box.visible = true
 	emit_signal("lock_dialogue")
 	
