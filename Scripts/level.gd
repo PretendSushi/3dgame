@@ -22,6 +22,7 @@ var is_ads = false
 var is_paused = false
 
 signal lock_dialogue
+signal unlock_dialogue
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,12 +91,14 @@ func _on_player_player_death():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 
-
 func _on_npc_load_dialogue(dialogue):
 	dialogue = load("res://Data/Dialogues/" + dialogue)
 	dialogue_json = dialogue
 	($UI/Dialogue/EzDialogue as EzDialogue).start_dialogue(dialogue_json, state)
 	dialogue_box.visible = true
 	emit_signal("lock_dialogue")
-	
-	
+
+func _on_dialogue_end_of_dialogue():
+	await get_tree().create_timer(2.0).timeout
+	dialogue_box.visible = false
+	emit_signal("unlock_dialogue")

@@ -1,0 +1,7 @@
+{
+	"name":"testQuestName",
+	"steps":[
+		"Talk to Margot",
+		"Kill the soldier"
+	]
+}

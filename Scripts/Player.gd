@@ -6,6 +6,7 @@ var sex
 var race
 var level
 var xp
+var quests = []
 
 #attributes
 var strength
@@ -116,6 +117,9 @@ func _ready():
 	xp = 1409
 	emit_signal("initialize_bars", max_health, health,max_stamina, stamina, sanity, xp)
 	emit_signal("initialize_char_sheet",[strength,reflexes,charisma,constitution,intelligence,perception])
+	
+	#give test quest
+	quests.push_back(Quest.new("testQuest.json"))
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -230,19 +234,20 @@ func _open_close_inv():
 func _walk(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if is_on_floor():
-		if direction:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+	if !is_dialogue_open:
+		if is_on_floor():
+			if direction:
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+			else:
+				velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+				velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
-	else:
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 
 func _shoot():
-	if(!is_inv_open):
+	if(!is_inv_open and !is_dialogue_open):
 		if curr_mag_count > 0:
 			curr_weapon._shoot(aim_ray)
 			curr_mag_count -= 1
@@ -377,3 +382,8 @@ func _on_character_sheet_point_sub(attr):
 func _on_level_lock_dialogue():
 	is_dialogue_open = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func _on_level_unlock_dialogue():
+	is_dialogue_open = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

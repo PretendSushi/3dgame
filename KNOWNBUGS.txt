@@ -1,0 +1,1 @@
+When picking up the SCAR-L in the test level, dialogue will re-open. More testing required

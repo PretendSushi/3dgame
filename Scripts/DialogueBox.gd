@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var choice_button_scn = preload("res://Scenes/ChoiceButton.tscn")
 
+signal end_of_dialogue
+
 var choice_buttons: Array[Button] = []
 
 func _clear_dialgoue_box():
@@ -12,6 +14,7 @@ func _clear_dialgoue_box():
 
 func _add_text(text: String):
 	$VBoxContainer/Text.text = text
+	#I know it goes here...
 	
 func _add_choice(choice_text: String):
 	var button_obj: ChoiceButton = choice_button_scn.instantiate()
@@ -43,3 +46,7 @@ func _on_ez_dialogue_dialogue_generated(response: DialogueResponse):
 	_add_text(response.text)
 	for choice in response.choices:
 		_add_choice(choice)
+
+
+func _on_ez_dialogue_end_of_dialogue_reached():
+	emit_signal("end_of_dialogue")
