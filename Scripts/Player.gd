@@ -60,6 +60,7 @@ signal xp_changed(xp)
 signal initialize_bars(max_health, health, max_stamina, stamina, sanity, xp)
 signal initialize_char_sheet(attr_arr)
 signal player_death()
+signal update_quest_log(quest_name)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
@@ -86,6 +87,7 @@ var curr_mag_count
 var weapon_slot1
 var weapon_slot2
 var curr_slot
+var newest_quest
 
 
 func _ready():
@@ -119,7 +121,10 @@ func _ready():
 	emit_signal("initialize_char_sheet",[strength,reflexes,charisma,constitution,intelligence,perception])
 	
 	#give test quest
-	quests.push_back(Quest.new("testQuest.json"))
+	newest_quest = Quest.new("testQuest.json")
+	quests.push_back(newest_quest)
+	
+	emit_signal("update_quest_log", newest_quest)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:

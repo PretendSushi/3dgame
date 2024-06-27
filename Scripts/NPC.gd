@@ -34,4 +34,5 @@ func _physics_process(delta):
 
 
 func _on_player_interact_attempt(item):
-	emit_signal("load_dialogue", "MargotStart.json")
+	if typeof(item) != TYPE_INT:
+		emit_signal("load_dialogue", "MargotStart.json")

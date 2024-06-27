@@ -25,3 +25,5 @@ func _on_pickup_detection_body_entered(body):
 func _on_pickup_detection_body_exited(body):
 	if "weapon_name" in body:
 		item_not_in_pickup_range.emit(body.item_id)
+	else:
+		item_not_in_pickup_range.emit(body)

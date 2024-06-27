@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqfqj0jt1pegw"]
+[gd_scene load_steps=24 format=3 uid="uid://bqfqj0jt1pegw"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_6d2ni"]
 [ext_resource type="PackedScene" uid="uid://gcrds3dve0pp" path="res://Scenes/Office.tscn" id="1_fjn70"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cu6tujsenu7id" path="res://Scenes/CharacterSheet.tscn" id="8_epmld"]
 [ext_resource type="PackedScene" uid="uid://d14xuaywbba4d" path="res://Scenes/HUD.tscn" id="9_y7uw0"]
 [ext_resource type="PackedScene" uid="uid://crdoxxb256tl5" path="res://Scenes/dialogue.tscn" id="10_k1hqk"]
+[ext_resource type="PackedScene" uid="uid://coy0ma6cnnef8" path="res://Scenes/QuestLog.tscn" id="10_mn5ah"]
 [ext_resource type="PackedScene" uid="uid://d0ag4brpxnxsd" path="res://Scenes/pauseMenu.tscn" id="12_46k8y"]
 [ext_resource type="PackedScene" uid="uid://bf1p33auhk3ly" path="res://Scenes/DeathScreen.tscn" id="13_5p1g5"]
 [ext_resource type="PackedScene" uid="uid://c02hgsmqqqj06" path="res://Scenes/CharacterManager.tscn" id="14_117gs"]
@@ -104,6 +105,10 @@ offset_top = 300.0
 offset_right = 550.0
 offset_bottom = 300.0
 
+[node name="QuestLog" parent="UI" instance=ExtResource("10_mn5ah")]
+visible = false
+layout_mode = 1
+
 [node name="Crosshair" type="TextureRect" parent="UI"]
 layout_mode = 1
 offset_left = 550.0
@@ -160,6 +165,7 @@ weapon_name = "SCAR-L"
 [connection signal="reserve_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_reserve_changed"]
 [connection signal="sanity_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_sanity_changed"]
 [connection signal="stamina_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_stamina_changed"]
+[connection signal="update_quest_log" from="NavigationRegion3D/Player" to="UI/QuestLog" method="_on_player_update_quest_log"]
 [connection signal="xp_changed" from="NavigationRegion3D/Player" to="UI/HUD" method="_on_player_xp_changed"]
 [connection signal="load_dialogue" from="NavigationRegion3D/NPC" to="." method="_on_npc_load_dialogue"]
 [connection signal="clean_slots" from="UI/Inventory" to="NavigationRegion3D/Player" method="_on_inventory_clean_slots"]
